@@ -58,5 +58,10 @@
     "slug": "pfx-to-pem",
     "title": "PFX / P12 to PEM Converter",
     "desc": "Split a password-protected .pfx or .p12 file into certificate, private key, and CA chain .pem files, entirely in your browser."
+  },
+  {
+    "slug": "edf-to-csv",
+    "title": "EDF / BDF to CSV Converter",
+    "desc": "Preview an EDF or BDF biosignal recording's channels and annotations, then export a time range to CSV, entirely in your browser."
   }
 ]
