@@ -43,5 +43,10 @@
     "slug": "video-tools",
     "title": "Video to GIF Converter & Compressor",
     "desc": "Convert video to GIF, or compress a video to a smaller file size, entirely in your browser."
+  },
+  {
+    "slug": "lnk-viewer",
+    "title": "Windows Shortcut (.lnk) Viewer",
+    "desc": "Inspect a Windows .lnk shortcut file: target, working directory, arguments, icon, and hidden tracker data."
   }
 ]
