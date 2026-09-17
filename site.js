@@ -55,7 +55,7 @@
 
   // Fill these in to switch on the ad-block donation nudge below; both null = feature is inert.
   var DONATION_LINKS = {
-    kofi: null,   // e.g. 'https://ko-fi.com/yourname'
+    kofi: 'https://ko-fi.com/gazethee',
     crypto: null  // e.g. a page with wallet addresses, or a direct address string
   };
 
