@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "ocr-online",
+    "title": "Free Online OCR",
+    "desc": "Extract text from images and scanned documents, entirely in your browser."
+  },
+  {
+    "slug": "heic-to-jpg",
+    "title": "HEIC to JPG Converter",
+    "desc": "Convert iPhone HEIC/HEIF photos to JPG or PNG, entirely in your browser."
+  },
+  {
+    "slug": "pdf-toolkit",
+    "title": "PDF Merge & Split",
+    "desc": "Combine PDFs into one file, or split a PDF into individual pages."
+  },
+  {
+    "slug": "zip-online",
+    "title": "ZIP Creator & Extractor",
+    "desc": "Create a ZIP archive from your files, or extract files from a ZIP."
+  },
+  {
+    "slug": "archive-extractor",
+    "title": "Universal Archive Extractor",
+    "desc": "Extract files from ZIP, RAR, 7-Zip, TAR, and more, entirely in your browser."
+  },
+  {
+    "slug": "appliance-cost-calculator",
+    "title": "Appliance Cost Calculator",
+    "desc": "See what an appliance actually costs to run, based on your electricity rate."
+  },
+  {
+    "slug": "bill-of-sale-generator",
+    "title": "Bill of Sale Generator",
+    "desc": "Generate a printable bill of sale for a vehicle or general goods."
+  },
+  {
+    "slug": "move-out-record",
+    "title": "Renter Move-Out Record",
+    "desc": "Document your rental condition and check security deposit deadlines."
+  }
+]
