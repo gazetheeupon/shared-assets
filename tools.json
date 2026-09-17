@@ -117,5 +117,12 @@
     "tech": "Pure JavaScript",
     "hasFileInput": true,
     "cluster": "image-tools"
+  },
+  {
+    "slug": "p2p-watcher",
+    "title": "P2P Watcher \u2014 Cross-Device Media Streaming",
+    "desc": "Stream a media folder from one of your own devices to another over an end-to-end encrypted peer-to-peer (WebRTC) connection. No server, no upload, no account.",
+    "tech": "WebRTC + WebAssembly (ffmpeg.wasm)",
+    "hasFileInput": true
   }
 ]
