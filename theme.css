@@ -1,4 +1,7 @@
-/* RunLocal shared theme — used by every tool page. Edit here to restyle all of them at once. */
+/* RunLocal shared theme — used by every tool page. Edit here to restyle all of them at once.
+   The header/nav bars below are deliberately self-contained (hardcoded colors, not the
+   host page's own CSS variables) so they render consistently even on a tool page that
+   predates this design system or uses a different palette. */
 :root{
   --bg:#0f1720;
   --card:#1a2532;
@@ -9,9 +12,9 @@
 }
 
 .site-header{
-  max-width:780px;
-  margin:0 auto;
-  padding:1rem 1rem 0;
+  background:#0f1720;
+  color:#e8edf2;
+  padding:.65rem 1rem;
   display:flex;
   align-items:baseline;
   gap:.6rem;
@@ -20,53 +23,57 @@
 .site-header__brand{
   font-weight:700;
   font-size:1.05rem;
-  color:var(--text);
+  color:#e8edf2;
   text-decoration:none;
   letter-spacing:.01em;
 }
-.site-header__brand:hover{ color:var(--accent); }
+.site-header__brand:hover{ color:#4fa8ff; }
 .site-header__tagline{
-  color:var(--muted);
+  color:#93a3b3;
   font-size:.85rem;
 }
 
 nav.more-tools{
+  background:#0f1720;
+  padding:1.5rem 1rem 2rem;
+  margin-top:2rem;
+}
+nav.more-tools > h2, nav.more-tools > ul{
   max-width:780px;
-  margin:0 auto 1.5rem;
-  padding:1.5rem 1rem 0;
+  margin-left:auto;
+  margin-right:auto;
 }
 nav.more-tools h2{
   font-size:.95rem;
-  color:var(--muted);
+  color:#93a3b3;
   font-weight:600;
-  margin:0 0 .8rem;
+  margin:0 auto .8rem;
   text-transform:uppercase;
   letter-spacing:.04em;
 }
 nav.more-tools ul{
   list-style:none;
-  margin:0;
   padding:0;
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
   gap:.7rem;
 }
 nav.more-tools li{
-  background:var(--card);
-  border:1px solid var(--border);
+  background:#1a2532;
+  border:1px solid #2a3745;
   border-radius:10px;
   padding:.8rem .9rem;
 }
 nav.more-tools a{
-  color:var(--text);
+  color:#e8edf2;
   text-decoration:none;
   font-weight:600;
   font-size:.92rem;
 }
-nav.more-tools a:hover{ color:var(--accent); }
+nav.more-tools a:hover{ color:#4fa8ff; }
 nav.more-tools p{
   margin:.3rem 0 0;
-  color:var(--muted);
+  color:#93a3b3;
   font-size:.8rem;
   line-height:1.4;
 }
