@@ -31,6 +31,18 @@
  * - Every visitor, anywhere, can open "Cookie preferences" in the footer at any
  *   time: it reopens Google's own consent dialog if present (`googlefc`), or falls
  *   back to this script's own simple Accept/Reject banner otherwise.
+ *
+ * SEO additions (per SEO_NOTES.md):
+ * - A "100% client-side" privacy badge is injected at the top of every tool page's
+ *   <main>, phrased from that tool's `tech`/`hasFileInput` fields in tools.json.
+ * - Every page's WebApplication JSON-LD block gets `browserRequirements` and
+ *   `permissions` fields added at runtime if the page's own script omitted them,
+ *   so this applies retroactively to already-shipped pages with no per-page edit.
+ * - Tools that share a `cluster` in tools.json (e.g. "Windows Forensics",
+ *   "Data Science") get a prominent "Part of the X toolkit" cross-link block near
+ *   the top of the page, in addition to the general "More free tools" nav.
+ * - A dormant ad-block-detected donation nudge: only activates once DONATION_LINKS
+ *   below has a real Ko-fi and/or crypto link configured; until then it's a no-op.
  */
 (function () {
   'use strict';
@@ -40,6 +52,17 @@
   var ADSENSE_CLIENT = 'ca-pub-9691619403787602';
   var DEFAULT_AADS_UNIT = '2455639'; // catchall unit, used unless #ad-slot sets data-aads-unit
   var CONSENT_KEY = 'runlocal_consent_v1';
+
+  // Fill these in to switch on the ad-block donation nudge below; both null = feature is inert.
+  var DONATION_LINKS = {
+    kofi: null,   // e.g. 'https://ko-fi.com/yourname'
+    crypto: null  // e.g. a page with wallet addresses, or a direct address string
+  };
+
+  var CLUSTER_LABELS = {
+    'windows-forensics': 'Windows Forensics',
+    'data-science': 'Data Science'
+  };
 
   // ISO 3166-1 alpha-2 codes: EU27 + EEA (Iceland, Liechtenstein, Norway) + UK + Switzerland.
   var CONSENT_REGION_CODES = [
@@ -131,7 +154,10 @@
     return s;
   }
 
+  var adWasAttempted = false; // set true whenever injectAd() actually tries to show an ad
+
   function injectAd() {
+    adWasAttempted = true;
     var slot = document.getElementById('ad-slot');
     if (!slot) return;
     var unit = slot.getAttribute('data-aads-unit') || DEFAULT_AADS_UNIT;
@@ -141,6 +167,7 @@
       '<iframe data-aa="' + unit + '" src="//acceptable.a-ads.com/' + unit + '/?size=Adaptive" ' +
       'style="border:0;padding:0;width:70%;height:auto;overflow:hidden;display:block;margin:auto"></iframe>' +
       '</div><!-- END AADS AD UNIT ' + unit + ' -->';
+    maybeShowDonationNudge();
   }
 
   // GA4 + AdSense load unconditionally: Consent Mode + Google's own consent message
@@ -170,6 +197,52 @@
       ad_user_data: 'denied',
       ad_personalization: 'denied',
       analytics_storage: 'denied'
+    });
+  }
+
+  // ---- 1b. Ad-block-detected donation nudge (dormant until DONATION_LINKS is filled in). ----
+  // Classic bait-element technique: an ad blocker's filter lists hide elements matching
+  // common ad-related class names, whether or not any real ad network is even present.
+  // Only checked when we actually tried to show an ad for this visitor (never nags a
+  // visitor who is still mid-consent-decision, or who explicitly rejected ads/analytics).
+  function maybeShowDonationNudge() {
+    if (!DONATION_LINKS.kofi && !DONATION_LINKS.crypto) return;
+    try {
+      if (sessionStorage.getItem('runlocal_donation_dismissed') === '1') return;
+    } catch (e) {}
+    var bait = document.createElement('div');
+    bait.className = 'ad-banner ads ad-placement adsbygoogle adsbox';
+    bait.style.cssText = 'position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;';
+    document.body.appendChild(bait);
+    setTimeout(function () {
+      var baitBlocked = bait.offsetHeight === 0 || bait.offsetParent === null ||
+        getComputedStyle(bait).display === 'none' || getComputedStyle(bait).visibility === 'hidden';
+      var slot = document.getElementById('ad-slot');
+      var slotEmpty = !!slot && slot.querySelector('iframe') === null;
+      bait.remove();
+      if (adWasAttempted && (baitBlocked || slotEmpty)) {
+        showDonationBanner();
+      }
+    }, 1200);
+  }
+
+  function showDonationBanner() {
+    if (document.getElementById('donation-banner')) return;
+    var links = [];
+    if (DONATION_LINKS.kofi) links.push('<a href="' + DONATION_LINKS.kofi + '" target="_blank" rel="noopener">Ko-fi</a>');
+    if (DONATION_LINKS.crypto) links.push('<a href="' + DONATION_LINKS.crypto + '" target="_blank" rel="noopener">Crypto</a>');
+    if (!links.length) return;
+    var bar = document.createElement('div');
+    bar.id = 'donation-banner';
+    bar.className = 'donation-banner';
+    bar.innerHTML =
+      '<span>Looks like you’re blocking ads. Good for you — these tools stay free either way. ' +
+      'If you’d like to help keep them running: ' + links.join(' &middot; ') + '</span>' +
+      '<button id="donation-dismiss" aria-label="Dismiss">&times;</button>';
+    document.body.appendChild(bar);
+    document.getElementById('donation-dismiss').addEventListener('click', function () {
+      bar.remove();
+      try { sessionStorage.setItem('runlocal_donation_dismissed', '1'); } catch (e) {}
     });
   }
 
@@ -203,11 +276,59 @@
     });
   }
 
+  // ---- 2b. Privacy badge + cluster cross-links (SEO_NOTES items 1 and 6) ----
+  function techPhrase(tech) {
+    if (!tech) return 'plain JavaScript';
+    if (tech.indexOf('WebAssembly') === 0) return tech + ', a sandboxed, no-install runtime the browser executes locally';
+    return tech;
+  }
+
+  function renderPrivacyBadge(selfEntry) {
+    var main = document.querySelector('main');
+    if (!main || !selfEntry) return;
+    var text = selfEntry.hasFileInput
+      ? '100% client-side: your file never leaves this browser tab, and nothing is ever uploaded. Runs on ' + techPhrase(selfEntry.tech) + ' plus the HTML5 File API.'
+      : '100% client-side: nothing you enter here is ever sent to a server. Runs on ' + techPhrase(selfEntry.tech) + '.';
+    var badge = document.createElement('div');
+    badge.className = 'privacy-badge';
+    badge.textContent = text;
+    main.insertBefore(badge, main.firstChild);
+    return badge;
+  }
+
+  function renderClusterNav(tools, selfEntry, afterEl) {
+    if (!selfEntry || !selfEntry.cluster) return;
+    var clusterTools = tools.filter(function (t) { return t.cluster === selfEntry.cluster && t.slug !== selfEntry.slug; });
+    if (!clusterTools.length) return;
+    var label = CLUSTER_LABELS[selfEntry.cluster] || selfEntry.cluster;
+    var main = document.querySelector('main');
+    if (!main) return;
+    var box = document.createElement('div');
+    box.className = 'cluster-nav';
+    box.innerHTML = '<strong>Part of the ' + label + ' toolkit:</strong> ' +
+      clusterTools.map(function (t) {
+        return '<a href="' + BASE + '/' + t.slug + '/">' + t.title + '</a>';
+      }).join(' &middot; ');
+    if (afterEl && afterEl.nextSibling) {
+      main.insertBefore(box, afterEl.nextSibling);
+    } else if (afterEl) {
+      main.appendChild(box);
+    } else {
+      main.insertBefore(box, main.firstChild);
+    }
+  }
+
   function renderNav() {
     fetch(BASE + '/shared-assets/tools.json')
       .then(function (r) { return r.json(); })
       .then(function (tools) {
         var selfSlug = location.pathname.split('/').filter(Boolean)[0] || '';
+        var selfEntry = null;
+        for (var i = 0; i < tools.length; i++) { if (tools[i].slug === selfSlug) { selfEntry = tools[i]; break; } }
+
+        var badgeEl = renderPrivacyBadge(selfEntry);
+        renderClusterNav(tools, selfEntry, badgeEl);
+
         var items = tools
           .filter(function (t) { return t.slug !== selfSlug; })
           .map(function (t) {
@@ -221,6 +342,33 @@
         renderFooter();
       })
       .catch(function () { renderFooter(); });
+  }
+
+  // ---- 2c. JSON-LD enhancement (SEO_NOTES item 7) ----
+  // Adds fields to the page's own WebApplication schema if it didn't already include
+  // them, so every already-shipped page benefits without a per-page edit. Google's
+  // indexer executes page JS before reading structured data, so a script-added field
+  // here is read the same as one authored directly in the page's HTML.
+  function enhanceJsonLd() {
+    var scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (var i = 0; i < scripts.length; i++) {
+      var el = scripts[i];
+      var data;
+      try { data = JSON.parse(el.textContent); } catch (e) { continue; }
+      if (!data || data['@type'] !== 'WebApplication') continue;
+      var changed = false;
+      if (!data.browserRequirements) {
+        data.browserRequirements = 'Requires HTML5 File API. JavaScript must be enabled.';
+        changed = true;
+      }
+      if (!data.permissions) {
+        data.permissions = 'Runs entirely client-side. No file data is uploaded to a server.';
+        changed = true;
+      }
+      if (changed) {
+        try { el.textContent = JSON.stringify(data, null, 2); } catch (e) {}
+      }
+    }
   }
 
   // ---- 3. Fallback consent banner (our own UI) ----
@@ -259,17 +407,20 @@
 
   // ---- 4. Boot (assumes this script tag has the `defer` attribute, so DOM is parsed) ----
   // The hub page (`data-hub` on the script tag) already has its own hero header and its
-  // own full tool grid, so it skips the injected header/nav and only gets the footer
-  // (with the Privacy Policy link) plus the same consent/analytics/ads behavior.
+  // own full tool grid, so it skips the injected header/nav/badge/cluster-nav and only
+  // gets the footer (with the Privacy Policy link) plus the same consent/analytics/ads
+  // behavior and JSON-LD enhancement.
   var scriptEl = document.currentScript;
   var isHub = !!(scriptEl && scriptEl.hasAttribute('data-hub'));
 
   function boot() {
+    enhanceJsonLd();
+
     if (isHub) {
       renderFooter();
     } else {
       renderHeader();
-      renderNav(); // renders footer once tools.json resolves (or immediately on failure)
+      renderNav(); // renders badge/cluster-nav/footer once tools.json resolves (or footer-only on failure)
     }
 
     loadGoogleTags(); // always: Consent Mode + Google's own consent message govern behavior
