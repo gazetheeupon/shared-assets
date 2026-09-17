@@ -100,5 +100,13 @@
     "tech": "Pure JavaScript",
     "hasFileInput": true,
     "cluster": "data-science"
+  },
+  {
+    "slug": "mat-to-csv",
+    "title": "MATLAB .mat to CSV Converter",
+    "desc": "Open a MATLAB .mat file (v5/v6/v7), list its variables and shapes, preview the data, and export a variable to CSV, entirely in your browser.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true,
+    "cluster": "data-science"
   }
 ]
