@@ -48,5 +48,10 @@
     "slug": "lnk-viewer",
     "title": "Windows Shortcut (.lnk) Viewer",
     "desc": "Inspect a Windows .lnk shortcut file: target, working directory, arguments, icon, and hidden tracker data."
+  },
+  {
+    "slug": "jumplist-viewer",
+    "title": "Windows Jump List Parser",
+    "desc": "Inspect a Windows jump list file: recent and pinned shortcuts, target paths, pin order, access counts."
   }
 ]
