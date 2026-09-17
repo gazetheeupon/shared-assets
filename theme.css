@@ -1,0 +1,72 @@
+/* RunLocal shared theme — used by every tool page. Edit here to restyle all of them at once. */
+:root{
+  --bg:#0f1720;
+  --card:#1a2532;
+  --text:#e8edf2;
+  --muted:#93a3b3;
+  --accent:#4fa8ff;
+  --border:#2a3745;
+}
+
+.site-header{
+  max-width:780px;
+  margin:0 auto;
+  padding:1rem 1rem 0;
+  display:flex;
+  align-items:baseline;
+  gap:.6rem;
+  flex-wrap:wrap;
+}
+.site-header__brand{
+  font-weight:700;
+  font-size:1.05rem;
+  color:var(--text);
+  text-decoration:none;
+  letter-spacing:.01em;
+}
+.site-header__brand:hover{ color:var(--accent); }
+.site-header__tagline{
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+nav.more-tools{
+  max-width:780px;
+  margin:0 auto 1.5rem;
+  padding:1.5rem 1rem 0;
+}
+nav.more-tools h2{
+  font-size:.95rem;
+  color:var(--muted);
+  font-weight:600;
+  margin:0 0 .8rem;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+nav.more-tools ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:.7rem;
+}
+nav.more-tools li{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:.8rem .9rem;
+}
+nav.more-tools a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  font-size:.92rem;
+}
+nav.more-tools a:hover{ color:var(--accent); }
+nav.more-tools p{
+  margin:.3rem 0 0;
+  color:var(--muted);
+  font-size:.8rem;
+  line-height:1.4;
+}
