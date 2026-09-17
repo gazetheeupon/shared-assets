@@ -38,5 +38,10 @@
     "slug": "move-out-record",
     "title": "Renter Move-Out Record",
     "desc": "Document your rental condition and check security deposit deadlines."
+  },
+  {
+    "slug": "video-tools",
+    "title": "Video to GIF Converter & Compressor",
+    "desc": "Convert video to GIF, or compress a video to a smaller file size, entirely in your browser."
   }
 ]
