@@ -11,7 +11,8 @@
     "title": "HEIC to JPG Converter",
     "desc": "Convert iPhone HEIC/HEIF photos to JPG or PNG, entirely in your browser.",
     "tech": "WebAssembly (libheif)",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "image-tools"
   },
   {
     "slug": "pdf-toolkit",
@@ -108,5 +109,13 @@
     "tech": "Pure JavaScript",
     "hasFileInput": true,
     "cluster": "data-science"
+  },
+  {
+    "slug": "image-metadata-viewer",
+    "title": "Image Metadata & EXIF Viewer",
+    "desc": "View EXIF, GPS, and text metadata hidden in a photo, and check whether its real format matches its extension, entirely in your browser.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true,
+    "cluster": "image-tools"
   }
 ]
