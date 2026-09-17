@@ -63,5 +63,10 @@
     "slug": "edf-to-csv",
     "title": "EDF / BDF to CSV Converter",
     "desc": "Preview an EDF or BDF biosignal recording's channels and annotations, then export a time range to CSV, entirely in your browser."
+  },
+  {
+    "slug": "npy-to-csv",
+    "title": "NPY / NPZ to CSV Converter",
+    "desc": "Open a NumPy .npy or .npz array file, inspect its dtype and shape, preview the data, and export it to CSV, entirely in your browser."
   }
 ]
