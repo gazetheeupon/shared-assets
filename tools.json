@@ -53,5 +53,10 @@
     "slug": "jumplist-viewer",
     "title": "Windows Jump List Parser",
     "desc": "Inspect a Windows jump list file: recent and pinned shortcuts, target paths, pin order, access counts."
+  },
+  {
+    "slug": "pfx-to-pem",
+    "title": "PFX / P12 to PEM Converter",
+    "desc": "Split a password-protected .pfx or .p12 file into certificate, private key, and CA chain .pem files, entirely in your browser."
   }
 ]
