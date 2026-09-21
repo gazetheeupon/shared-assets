@@ -125,5 +125,13 @@
     "tech": "Pure JavaScript",
     "hasFileInput": true,
     "cluster": "data-science"
+  },
+  {
+    "slug": "reg-previewer",
+    "title": ".reg File Viewer",
+    "desc": "Open a Windows .reg file and see exactly what it will do before you import it: every key created or deleted, every value set, decoded in plain language.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true,
+    "cluster": "windows-forensics"
   }
 ]
