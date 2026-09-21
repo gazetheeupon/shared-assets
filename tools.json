@@ -161,5 +161,12 @@
     "desc": "Check who signed a Windows .exe/.dll, whether it's been modified since signing, and whether it carries a trusted timestamp. Entirely in your browser.",
     "tech": "Pure JavaScript",
     "hasFileInput": true
+  },
+  {
+    "slug": "macho-splitter",
+    "title": "Mach-O Fat/Universal Binary Splitter",
+    "desc": "Inspect a macOS/iOS Mach-O fat (universal) binary's architecture slices and extract any one of them (x86_64, arm64, i386, armv7...) as a standalone thin Mach-O file. Entirely in your browser.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true
   }
 ]
