@@ -177,5 +177,21 @@
     "tech": "Pure JavaScript",
     "hasFileInput": true,
     "cluster": "dev-tools"
+  },
+  {
+    "slug": "icl-extractor",
+    "title": "ICL Icon Library Extractor",
+    "desc": "Extract every icon inside a Windows .icl icon library (or any .exe/.dll) as standalone .ico files, entirely in your browser.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true,
+    "cluster": "dev-tools"
+  },
+  {
+    "slug": "clickonce-inspector",
+    "title": "ClickOnce Inspector",
+    "desc": "Open a ClickOnce deployment and see exactly what it installs before you trust it: publisher, entry point, trust level, and every file's hash verified. Recover real filenames from renamed .deploy files.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true,
+    "cluster": "dev-tools"
   }
 ]
