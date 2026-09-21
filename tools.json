@@ -117,5 +117,13 @@
     "tech": "Pure JavaScript",
     "hasFileInput": true,
     "cluster": "image-tools"
+  },
+  {
+    "slug": "rdata-to-csv",
+    "title": "RData / RDS to CSV Converter",
+    "desc": "Open an R .RData, .rda, or .rds file, list its objects, and export a data frame or vector to CSV, entirely in your browser.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true,
+    "cluster": "data-science"
   }
 ]
