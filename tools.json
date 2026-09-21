@@ -133,5 +133,12 @@
     "tech": "Pure JavaScript",
     "hasFileInput": true,
     "cluster": "windows-forensics"
+  },
+  {
+    "slug": "vsix-inspector",
+    "title": "VSIX Inspector",
+    "desc": "Open a .vsix VS Code extension package and see what's inside before installing it: files, commands, settings, and keybindings it registers.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true
   }
 ]
