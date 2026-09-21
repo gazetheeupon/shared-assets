@@ -154,5 +154,12 @@
     "desc": "Find, edit, and export your RuneScape: Dragonwilds dedicated server's DedicatedServer.ini. Upload your existing config to edit it, or start fresh.",
     "tech": "Pure JavaScript",
     "hasFileInput": true
+  },
+  {
+    "slug": "authenticode-inspector",
+    "title": "Authenticode / PE Signature Inspector",
+    "desc": "Check who signed a Windows .exe/.dll, whether it's been modified since signing, and whether it carries a trusted timestamp. Entirely in your browser.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true
   }
 ]
