@@ -26,35 +26,40 @@
     "title": "ZIP Creator & Extractor",
     "desc": "Create a ZIP archive from your files, or extract files from a ZIP.",
     "tech": "Pure JavaScript (JSZip)",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "archive-tools"
   },
   {
     "slug": "archive-extractor",
     "title": "Universal Archive Extractor",
     "desc": "Extract files from ZIP, RAR, 7-Zip, TAR, and more, entirely in your browser.",
     "tech": "WebAssembly (libarchive)",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "archive-tools"
   },
   {
     "slug": "appliance-cost-calculator",
     "title": "Appliance Cost Calculator",
     "desc": "See what an appliance actually costs to run, based on your electricity rate.",
     "tech": "Pure JavaScript",
-    "hasFileInput": false
+    "hasFileInput": false,
+    "cluster": "home-tools"
   },
   {
     "slug": "bill-of-sale-generator",
     "title": "Bill of Sale Generator",
     "desc": "Generate a printable bill of sale for a vehicle or general goods.",
     "tech": "Pure JavaScript",
-    "hasFileInput": false
+    "hasFileInput": false,
+    "cluster": "home-tools"
   },
   {
     "slug": "move-out-record",
     "title": "Renter Move-Out Record",
     "desc": "Document your rental condition and check security deposit deadlines.",
     "tech": "Pure JavaScript",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "home-tools"
   },
   {
     "slug": "video-tools",
@@ -84,7 +89,8 @@
     "title": "PFX / P12 to PEM Converter",
     "desc": "Split a password-protected .pfx or .p12 file into certificate, private key, and CA chain .pem files, entirely in your browser.",
     "tech": "Pure JavaScript",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "security"
   },
   {
     "slug": "edf-to-csv",
@@ -139,7 +145,8 @@
     "title": "VSIX Inspector",
     "desc": "Open a .vsix VS Code extension package and see what's inside before installing it: files, commands, settings, and keybindings it registers.",
     "tech": "Pure JavaScript",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "dev-tools"
   },
   {
     "slug": "kar-extractor",
@@ -160,13 +167,15 @@
     "title": "Authenticode / PE Signature Inspector",
     "desc": "Check who signed a Windows .exe/.dll, whether it's been modified since signing, and whether it carries a trusted timestamp. Entirely in your browser.",
     "tech": "Pure JavaScript",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "security"
   },
   {
     "slug": "macho-splitter",
     "title": "Mach-O Fat/Universal Binary Splitter",
     "desc": "Inspect a macOS/iOS Mach-O fat (universal) binary's architecture slices and extract any one of them (x86_64, arm64, i386, armv7...) as a standalone thin Mach-O file. Entirely in your browser.",
     "tech": "Pure JavaScript",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "dev-tools"
   }
 ]
