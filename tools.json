@@ -147,5 +147,12 @@
     "desc": "Open a .kar or .mid karaoke MIDI file and read its lyrics with correct timing: preview them scrolling in sync, export to .lrc or .txt, or export a lyrics-stripped .mid.",
     "tech": "Pure JavaScript",
     "hasFileInput": true
+  },
+  {
+    "slug": "dragonwilds-server-config",
+    "title": "RuneScape: Dragonwilds Server Config Editor",
+    "desc": "Find, edit, and export your RuneScape: Dragonwilds dedicated server's DedicatedServer.ini. Upload your existing config to edit it, or start fresh.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true
   }
 ]
