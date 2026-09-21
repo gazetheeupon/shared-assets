@@ -61,7 +61,12 @@
 
   var CLUSTER_LABELS = {
     'windows-forensics': 'Windows Forensics',
-    'data-science': 'Data Science'
+    'data-science': 'Data Science',
+    'image-tools': 'Image Tools',
+    'archive-tools': 'Archive Tools',
+    'security': 'Security & Cryptography',
+    'dev-tools': 'Developer Tools',
+    'home-tools': 'Everyday & Home Tools'
   };
 
   // ISO 3166-1 alpha-2 codes: EU27 + EEA (Iceland, Liechtenstein, Norway) + UK + Switzerland.
