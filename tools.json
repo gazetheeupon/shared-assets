@@ -140,5 +140,12 @@
     "desc": "Open a .vsix VS Code extension package and see what's inside before installing it: files, commands, settings, and keybindings it registers.",
     "tech": "Pure JavaScript",
     "hasFileInput": true
+  },
+  {
+    "slug": "kar-extractor",
+    "title": "Karaoke (.kar) Lyrics Extractor",
+    "desc": "Open a .kar or .mid karaoke MIDI file and read its lyrics with correct timing: preview them scrolling in sync, export to .lrc or .txt, or export a lyrics-stripped .mid.",
+    "tech": "Pure JavaScript",
+    "hasFileInput": true
   }
 ]
