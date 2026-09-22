@@ -66,7 +66,8 @@
     "title": "Video to GIF Converter & Compressor",
     "desc": "Convert video to GIF, or compress a video to a smaller file size, entirely in your browser.",
     "tech": "WebAssembly (ffmpeg.wasm)",
-    "hasFileInput": true
+    "hasFileInput": true,
+    "cluster": "video-tools"
   },
   {
     "slug": "lnk-viewer",
@@ -193,5 +194,13 @@
     "tech": "Pure JavaScript",
     "hasFileInput": true,
     "cluster": "dev-tools"
+  },
+  {
+    "slug": "mp4-repair",
+    "title": "MP4/MOV Repair (moov atom not found)",
+    "desc": "Repair a truncated or corrupted MP4, MOV, M4V or 3GP file that won't play, entirely in your browser. Free, no upload, no size limit.",
+    "tech": "WebAssembly (untrunc, GPL-2.0)",
+    "hasFileInput": true,
+    "cluster": "video-tools"
   }
 ]
