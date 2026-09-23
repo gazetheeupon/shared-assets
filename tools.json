@@ -202,5 +202,27 @@
     "tech": "WebAssembly (untrunc, GPL-2.0)",
     "hasFileInput": true,
     "cluster": "video-tools"
+  },
+  {
+    "slug": "appx-unpacker",
+    "title": "APPX/MSIX Inspector & Unpacker",
+    "desc": "Open an APPX, MSIX, APPXBUNDLE, or MSIXBUNDLE Windows app package in your browser. Inspect the manifest, identity, capabilities, files, and signatures, then export the contents as a ZIP. Free, no upload.",
+    "tech": "JavaScript (fflate)",
+    "hasFileInput": true,
+    "cluster": "dev-tools"
+  },
+  {
+    "slug": "future-relic-generator",
+    "title": "Future Relic Generator",
+    "desc": "Turn any sentence into a downloadable artifact from a parallel timeline. A local-only novelty generator, no uploads, accounts, or tracking.",
+    "tech": "JavaScript",
+    "hasFileInput": false
+  },
+  {
+    "slug": "tv-incident-distiller",
+    "title": "TV Incident Distiller",
+    "desc": "Paste a smart-TV, DRM, manifest, or playback log and turn it into a concise incident handoff with likely focus areas, repeated signatures, timeline, and next checks. Runs locally in your browser.",
+    "tech": "JavaScript",
+    "hasFileInput": false
   }
 ]
